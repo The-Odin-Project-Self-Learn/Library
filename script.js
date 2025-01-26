@@ -27,9 +27,13 @@ function displayBooks() {
         const author = document.createElement('p');
         author.textContent = book.author;
 
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'remove';
+
         //create the book-card and add it to the row
         bookCard.appendChild(title);
         bookCard.appendChild(author);
+        bookCard.appendChild(removeButton);
         bookRow.appendChild(bookCard);
     });
 
