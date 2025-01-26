@@ -27,12 +27,14 @@ function displayBooks() {
         const author = document.createElement('p');
         author.textContent = book.author;
 
+        //create the book-card and add it to the row
         bookCard.appendChild(title);
         bookCard.appendChild(author);
         bookRow.appendChild(bookCard);
     });
 
-    libraryContainer.appendChild(bookRow); //add the newly populated flex row to the library container
+    //after populating rows with all books, append the row(s) to the library
+    libraryContainer.appendChild(bookRow); 
 }
 
 
