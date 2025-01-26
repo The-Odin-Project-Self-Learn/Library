@@ -37,5 +37,16 @@ function displayBooks() {
 
 
 addBookToLibrary("The Sorcerer's Stone", "JK Rowling");
+addBookToLibrary("The Chamber of Secrets", "JK Rowling");
+addBookToLibrary("The Prisoner of Azkaban", "JK Rowling");
+addBookToLibrary("The Goblet of Fire", "JK Rowling");
+addBookToLibrary("The Order of the Phoenix", "JK Rowling");
+addBookToLibrary("The Half-Blood Prince", "JK Rowling");
+addBookToLibrary("The Deathly Hallows", "JK Rowling");
+
 addBookToLibrary("The Hunger Games", "Suzanne Collins");
+addBookToLibrary("Catching Fire", "Suzanne Collins");
+addBookToLibrary("Mockingjay", "Suzanne Collins");
+
+
 displayBooks();
