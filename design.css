@@ -7,18 +7,24 @@ input {
     margin-bottom: 20px;
 }
 
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .sidebar {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 40%;
+    width: 100%;
 }
 
 .library {
     height: 100vh;
     background-color: rgb(239, 161, 93);
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .library-row {

@@ -84,8 +84,5 @@ addBookToLibrary("Catching Fire", "Suzanne Collins");
 addBookToLibrary("Mockingjay", "Suzanne Collins");
 addBookToLibrary("The Maze Runner", "James Dashner");
 addBookToLibrary("The Scorch Trials", "James Dashner");
-addBookToLibrary("Mockingjay", "Suzanne Collins");
-addBookToLibrary("The Maze Runner", "James Dashner");
-addBookToLibrary("The Scorch Trials", "James Dashner");
 
 displayBooks();
