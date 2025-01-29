@@ -33,6 +33,7 @@ input {
     justify-content: space-evenly;
     flex-wrap: wrap;
     gap: 8px;
+    background-color: rgb(239, 161, 93);
 }
 
 .book-card {

@@ -12,12 +12,26 @@ function addBookToLibrary(name, author) {
   myLibrary.push(newBook);
 }
 
+
+
+
+/*Book display logic*/
 function displayBooks() {
-    const libraryContainer = document.querySelector('.library'); 
+    const library = document.querySelector('.library');
 
-    const bookRow = document.createElement('div');
-    bookRow.classList.add('library-row'); 
+    let bookRow = document.querySelector('.library-row');
 
+    //if there is no row of books yet, create a new one and add it to the library
+    if (!bookRow) {
+        bookRow = document.createElement('div');
+        bookRow.classList.add('library-row');
+        library.appendChild(bookRow); 
+    }
+
+    //clear all book-cards from the row
+    bookRow.innerHTML = '';
+
+    //add each book-card, representing each book from the array, to the row
     myLibrary.forEach((book, index) => {
         //assign each book a unique identifier
         book.id = index;
@@ -43,13 +57,19 @@ function displayBooks() {
     });
 
     //after populating rows with all books, append the row(s) to the library
-    libraryContainer.appendChild(bookRow); 
+    library.appendChild(bookRow); 
 
     //add an event listener to each remove button. When clicked, the button belonging to a particular book-card is sent to removeBook().
     const buttons = document.querySelectorAll('.remove-button');
-    buttons.forEach((button) => addEventListener('click', (event) => removeBook(event.target)));
+    buttons.forEach((button) => {
+        button.addEventListener('click', (event) => removeBook(event.target))
+    });
 }
 
+
+
+
+/* Book removal logic */
 //given the remove button of a particular book-card that was clicked, remove the corresponding book
 function removeBook(removeButton) {
     //access the specific book-card corresponding to this particular remove button
@@ -62,7 +82,7 @@ function removeBook(removeButton) {
     row.removeChild(bookCard);
 
     //iterate through the array of books and remove the particular book from the array once its ID is matched
-    const title = bookCard.querySelector('h1');
+    const title = bookCard.querySelector('h3').textContent;
     myLibrary.forEach((book) => {
         if (book.title === title) { //if this book's title matches this bookCards' associated book title
             const index = myLibrary.indexOf(book); //retrieve its index position in the array
@@ -72,6 +92,28 @@ function removeBook(removeButton) {
 }
 
 
+
+
+/* Form logic */
+const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+    event.preventDefault(); //prevent the form from trying to send inputted form data to server
+
+    //access the text content of the relevant form input fields
+    const bookTitle = document.getElementById('title').value;
+    const bookAuthor = document.getElementById('author').value;
+
+    addBookToLibrary(bookTitle, bookAuthor);
+
+    displayBooks();
+
+    form.reset();
+});
+
+
+
+
+/* Add initial set of books to library */
 addBookToLibrary("The Sorcerer's Stone", "JK Rowling");
 addBookToLibrary("The Chamber of Secrets", "JK Rowling");
 addBookToLibrary("The Prisoner of Azkaban", "JK Rowling");
