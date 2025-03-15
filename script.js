@@ -96,8 +96,31 @@ function removeBook(removeButton) {
 
 /* Form logic */
 const form = document.querySelector('form');
+const errorMsg = document.createElement('p');
+
 form.addEventListener('submit', (event) => {
     event.preventDefault(); //prevent the form from trying to send inputted form data to server
+    errorMsg.remove(); //if errors corrected, remove error message
+
+    const titleInput = document.getElementById('title');
+    const authorInput = document.getElementById('author');
+
+    // We accumulate validation messages for both fields
+    let messages = [];
+    if (!titleInput.checkValidity()) {
+        messages.push("Please enter a book title");
+    }
+    if (!authorInput.checkValidity()) {
+        messages.push("Please enter the name of an author");
+    }
+
+    //If there are any validation errors, display them and STOP here
+    if (messages.length > 0) {
+        errorMsg.textContent = messages.join(' | '); // Combine or separate as you wish
+        const formContainer = document.getElementById('form-container');
+        formContainer.after(errorMsg);
+        return;
+    }
 
     //access the text content of the relevant form input fields
     const bookTitle = document.getElementById('title').value;
